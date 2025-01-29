@@ -9,7 +9,7 @@ def setup_browser(request):
     browser.config.window_width = width
     browser.config.window_height = height
 
-    yield "desktop" if width > 900 else "mobile"
+    yield "desktop" if width > 1024 else "mobile"
 
     browser.quit()
 
