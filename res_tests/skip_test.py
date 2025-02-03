@@ -1,8 +1,8 @@
 import pytest
 from selene import browser, be, have
 
-
 link = "https://github.com/"
+
 
 def test_desktop_skip(setup_browser):
     if setup_browser == "mobile":

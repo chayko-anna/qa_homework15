@@ -1,5 +1,5 @@
 import pytest
-from selene import browser, be, have, by
+from selene import browser, be, have
 from selenium import webdriver
 
 
@@ -13,12 +13,14 @@ def settings_browser(request):
     browser.config.window_width = width
     browser.config.window_height = height
 
+
 @pytest.mark.parametrize('settings_browser', [(375, 812), (414, 896)], indirect=True)
 def test_sign_in_mobile(settings_browser):
     browser.open("/")
     browser.element("button.Button--link").should(be.visible).click()
     browser.element("a[href='/login']").should(be.visible).click()
     browser.should(have.url_containing("login"))
+
 
 @pytest.mark.parametrize('settings_browser', [(1920, 1080), (1366, 768)], indirect=True)
 def test_sign_in_desktop(settings_browser):
